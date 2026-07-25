@@ -440,7 +440,25 @@ h1, h2, h3 {
 
 .case-card.featured {
     grid-column: span 2;
-    background: linear-gradient(120deg, rgba(47, 113, 220, .24), var(--card));
+    background: linear-gradient(135deg, rgba(47, 113, 220, .28), var(--card));
+    border: 1px solid rgba(98, 163, 255, .45);
+    position: relative;
+    overflow: hidden;
+}
+
+.case-card.featured::before {
+    content: "FEATURED";
+    position: absolute;
+    top: 18px;
+    right: -42px;
+    width: 180px;
+    text-align: center;
+    padding: 5px 0;
+    background: var(--accent);
+    color: #06101f;
+    font: 600 .62rem "DM Mono", monospace;
+    letter-spacing: .12em;
+    transform: rotate(35deg);
 }
 
 .case-number {

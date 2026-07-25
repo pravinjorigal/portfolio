@@ -17,8 +17,8 @@ const portfolio = {
   metrics: [
     { value: '~8', label: 'years in enterprise engineering' },
     { value: '50+', label: 'enterprise APIs delivered' },
-    { value: '30+', label: 'production releases supported' },
-    { value: '99.9%', label: 'uptime system ownership' },
+    { value: '30+', label: 'enterprise production releases' },
+    { value: '50+', label: 'production issues investigated & resolved' },
     { value: '50K–100K', label: 'requests/day on a platform' },
     { value: '6s → 1.5s', label: 'P90 latency improvement' }
   ],
