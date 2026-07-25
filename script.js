@@ -35,24 +35,25 @@ const portfolio = {
       period: 'Mar 2022 — Present',
       title: 'Staff Engineer',
       org: 'Nagarro',
-      description: 'Formerly Associate Staff Engineer and Senior Engineer. Modernizing WebSphere applications into Spring Boot 3 microservices; designing high-performance APIs for an insurance platform serving approximately 50K–100K daily requests; co-leading an offshore team of 4–5 engineers.',
+      description: 'Progressed through Senior Engineer and Associate Staff Engineer to Staff Engineer while leading backend modernization, designing enterprise APIs, improving production reliability, and driving performance initiatives for a large-scale insurance platform handling approximately 50K–100K requests per day.',
       points: [
-        'Reduced P90 latency by ~75% (6s to 1.5s) through concurrency, caching, and query tuning.',
-        'Drove Java 17 / Spring Boot 3 adoption and resolved 100+ vulnerabilities with zero-regression deployments.',
-        'Improved observability with JSON logs and Splunk dashboards, shortening RCA from hours to minutes.'
+        'Improved P90 latency by ~75% (6s → 1.5s) using asynchronous processing with CompletableFuture, Redis caching, and Oracle SQL optimization.',
+        'Led incremental modernization from legacy WebSphere applications to Java 17 and Spring Boot 3 microservices, resolving Jakarta migration challenges and more than 100 security vulnerabilities with stable production releases.',
+        'Enhanced production observability through structured JSON logging and Splunk dashboards, significantly reducing root cause analysis time for production incidents.',
+        'Co-led an offshore engineering team of 4–5 developers, contributing to technical design, code reviews, production support, and delivery planning.'
       ]
     },
     {
       period: 'Jul 2018 — Mar 2022',
       title: 'Project Engineer',
       org: 'Wipro',
-      description: 'Developed and enhanced Spring Boot microservices for a banking onboarding platform, with a focus on search, exports, Oracle data access, and reliable releases.',
+      description: 'Built and enhanced Spring Boot microservices for a large-scale banking onboarding platform, delivering backend services, Oracle database integrations, and production-ready APIs supporting customer onboarding workflows.',
       points: [
-        'Built an Excel export microservice for large datasets.',
-        'Optimized Oracle SQL with MyBatis and reusable database functions.',
-        'Contributed to design discussions, integration testing, code reviews, and Phase 2 improvements adopted in production.'
+        'Designed and implemented backend services including high-volume Excel export capabilities for enterprise banking users.',
+        'Optimized Oracle SQL using MyBatis, reusable PL/SQL functions, and query tuning to improve application performance.',
+        'Collaborated with architects, QA, and cross-functional teams on API design, integration testing, code reviews, production deployments, and Phase 2 feature enhancements.'
       ]
-    }
+    },
   ],
 
   education: [
@@ -86,13 +87,58 @@ const portfolio = {
   ],
 
   projects: [
-    { number: '01', tag: 'Performance', title: 'Member Certificate Booklets', summary: 'Identified redundant processing, parallelized independent downstream calls, and added Redis caching to meet a strict SLA.', impactValue: '~75%', impactLabel: 'lower P90 latency<br>6s → 1.5s', link: 'projects/member-certificate-booklets.html', featured: true },
-    { number: '02', tag: 'Onboarding', title: 'Quick Registration', summary: 'Delivered an API-first insurance registration journey that coordinated business validation with LDAP and Okta integrations.', link: 'projects/quick-registration.html' },
-    { number: '03', tag: 'Modernization', title: 'Java 17 &amp; Spring Boot 3', summary: 'Modernized legacy services incrementally, resolving Java, dependency, and Jakarta compatibility issues safely.', link: 'projects/legacy-modernization.html' },
-    { number: '04', tag: 'Reliability', title: 'Production Resilience', summary: 'Used structured logging and Splunk to trace intermittent timeouts, then introduced safe retry handling for transient failures.', link: 'projects/production-reliability.html' },
-    { number: '05', tag: 'Architecture', title: 'Maintainable Microservices', summary: 'Applied layered architecture and reusable integration boundaries to keep evolving enterprise services easier to change and support.', link: 'projects/maintainable-microservices.html' },
-    { number: '06', tag: 'Caching', title: 'Redis Caching Strategy', summary: 'Designed a cache-aside strategy for high-read reference data, cutting redundant database round-trips without risking staleness.', link: 'projects/redis-caching-strategy.html' },
-    { number: '07', tag: 'Data', title: 'SQL Optimization', summary: 'Rewrote slow Oracle queries and indexing behind a banking search and export feature, turning multi-second table scans into near-instant lookups.', link: 'projects/sql-optimization.html' }
+      {
+        number: '01',
+        tag: 'Performance',
+        title: 'Member Certificate Booklets',
+        tech: ['Java 17', 'Spring Boot', 'CompletableFuture', 'Redis', 'Oracle'],
+        summary: 'Identified redundant processing, parallelized independent downstream calls, and added Redis caching to meet a strict SLA.',
+        impactValue: '~75%',
+        impactLabel: 'lower P90 latency<br>6s → 1.5s',
+        link: 'projects/member-certificate-booklets.html',
+        featured: true
+      },
+    {
+      number: '02',
+      tag: 'Architecture',
+      title: 'Quick Registration',
+      tech: ['Java 17', 'Spring Boot', 'LDAP', 'Okta', 'REST API'],
+      summary: 'Designed and delivered a high-throughput registration workflow by orchestrating multiple backend services, business validations, LDAP, and Okta integrations behind a single API while keeping the solution extensible for future onboarding requirements.',
+      link: 'projects/quick-registration.html'
+    },
+    {
+      number: '03',
+      tag: 'Modernization',
+      title: 'Java 17 & Spring Boot 3',
+      tech: ['Java 17', 'Spring Boot 3', 'Jakarta EE', 'Maven'],
+      summary: 'Led the incremental modernization of legacy enterprise applications to Java 17 and Spring Boot 3, resolving Jakarta migration challenges, dependency compatibility issues, and security vulnerabilities while ensuring stable production deployments.',
+      link: 'projects/legacy-modernization.html'
+    },
+    {
+      number: '04',
+      tag: 'Production',
+      title: 'Production Reliability',
+      tech: ['Splunk', 'JSON Logging', 'Spring Boot', 'REST APIs'],
+      summary: 'Improved production observability using structured JSON logging and Splunk dashboards to accelerate root cause analysis, diagnose intermittent failures, and implement resilient retry handling for transient downstream errors.',
+      link: 'projects/production-reliability.html'
+    },
+    {
+      number: '05',
+      tag: 'Architecture',
+      title: 'Enterprise Microservice Design',
+      tech: ['Spring Boot', 'Microservices', 'REST APIs', 'Oracle'],
+      summary: 'Designed modular Spring Boot microservices with clear service boundaries, reusable integration layers, and maintainable APIs to simplify future enhancements, reduce coupling, and improve long-term supportability.',
+      link: 'projects/maintainable-microservices.html'
+    },
+    {
+      number: '06',
+      tag: 'Performance',
+      title: 'Redis Caching Strategy',
+      tech: ['Redis', 'Spring Boot', 'Oracle'],
+      summary: 'Designed and implemented a Redis cache-aside strategy for frequently accessed reference data, reducing database load, improving response times, and balancing performance with data consistency through controlled cache invalidation.',
+      link: 'projects/redis-caching-strategy.html'
+    },
+    { number: '07', tag: 'Data', title: 'SQL Optimization', tech: ['Oracle SQL', 'MyBatis', 'PL/SQL'], summary: 'Rewrote slow Oracle queries and indexing behind a banking search and export feature, turning multi-second table scans into near-instant lookups.', link: 'projects/sql-optimization.html' }
   ],
 
   snapshots: [
@@ -154,7 +200,19 @@ function renderCertifications() {
 function renderProjects() {
   const el = document.getElementById('projects-container');
   if (!el) return;
-  el.innerHTML = portfolio.projects.map(p => `<article class="case-card${p.featured ? ' featured' : ''} reveal"><p class="case-number">${p.number} / ${p.tag}</p><h3>${p.title}</h3><p>${p.summary}</p>${p.impactValue ? `<div class="impact"><b>${p.impactValue}</b><span>${p.impactLabel}</span></div>` : ''}<a href="${p.link}">Read case study <span>→</span></a></article>`).join('');
+  el.innerHTML = portfolio.projects.map(p => `<article class="case-card${p.featured ? ' featured' : ''} reveal"><p class="case-number">${p.number} / ${p.tag}</p><h3>${p.title}</h3>
+  <p>${p.summary}</p>
+
+  ${p.tech ? `
+  <div class="case-tech">
+    ${p.tech.map(t => `<span>${t}</span>`).join('')}
+  </div>
+  ` : ''}
+
+  ${p.impactValue ? `<div class="impact"><b>${p.impactValue}</b><span>${p.impactLabel}</span></div>` : ''}
+
+  <a href="${p.link}">Read case study <span>→</span></a>
+  </article>`).join('');
 }
 
 function renderSnapshots() {
