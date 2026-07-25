@@ -143,13 +143,18 @@ h1, h2, h3 {
     color: var(--text);
 }
 
-.hero h2, .section-intro h2, .contact h2 {
+.hero h1,
+.section-intro h2,
+.contact h2 {
     margin: 18px 0 24px;
-    font: 600 clamp(2.55rem, 5vw, 5rem)/1.05 "Space Grotesk";
-    letter-spacing: -.055em;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: clamp(2.4rem, 2vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
 }
 
-.hero h2 em {
+.hero h1 em {
     color: var(--accent-2);
     font-style: normal;
 }
