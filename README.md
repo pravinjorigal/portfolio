@@ -1,4 +1,4 @@
-# [Pravin's Portfolio] (https://pravinjorigal.github.io/portfolio/)
+Pravin's Portfolio https://pravinjorigal.github.io/portfolio/
 
 A static, GitHub Pages-ready portfolio for a Senior Java Backend Engineer. It presents eight confidentiality-safe engineering case studies and requires no build step or backend.
 
