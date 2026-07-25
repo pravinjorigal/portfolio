@@ -1,87 +1,659 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="A production reliability case study by Pravin.">
-    <title>Production Reliability | Pravin</title>
+
+    <meta name="description"
+          content="Production reliability case study demonstrating how evidence-based investigation and targeted resilience improvements resolved intermittent production failures.">
+
+    <title>Production Reliability | Pravin Jorigal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-          rel="stylesheet">
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+            rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 <body>
+
 <header class="site-header">
-    <nav class="nav shell"><a class="wordmark" href="../index.html">Pravin Jorigal</a><a class="button quiet"
-                                                                                         href="../index.html#projects">←
-        All case studies</a></nav>
+
+    <nav class="nav shell">
+
+        <a class="wordmark" href="../index.html">
+            Pravin Jorigal
+        </a>
+
+        <a class="button quiet" href="../index.html#projects">
+            ← All case studies
+        </a>
+
+    </nav>
+
 </header>
+
 <main class="case-page shell">
-    <section class="case-hero reveal"><p class="kicker">04 / Reliability engineering · Life insurance</p>
-        <h1>Improving Production Resilience</h1>
-        <p class="lead">Investigated intermittent API failures with structured logs and Splunk, isolated a transient
-            downstream timeout pattern, and introduced safe retry behaviour for a customer-facing service.</p>
-        <div class="case-meta"><span>Role · Backend Engineer</span><span>Domain · Life insurance</span><span>Users · Customer-facing service</span><span>Production · Yes</span><span>Focus · Observability &amp; resilience</span>
+
+    <section class="case-hero reveal">
+
+        <p class="kicker">
+
+            04 / Production Reliability · Enterprise Backend Systems
+
+        </p>
+
+        <h1>
+
+            Improving Production Resilience
+
+        </h1>
+
+        <p class="lead">
+
+            Investigated an intermittent production incident affecting a
+            customer-facing API, identified a transient downstream timeout pattern
+            through structured logging and Splunk analysis, and implemented a
+            targeted resilience strategy that enabled automatic recovery while
+            preserving application behaviour and minimizing operational risk.
+
+        </p>
+
+        <div class="case-meta">
+
+            <span>Role · Backend Engineer</span>
+
+            <span>Domain · Life Insurance</span>
+
+            <span>Environment · Production</span>
+
+            <span>Focus · Reliability Engineering</span>
+
+            <span>Tools · Splunk & Resilience4j</span>
+
         </div>
+
     </section>
+
     <section class="case-content reveal">
-        <aside><p class="kicker">At a glance</p>
+
+        <aside>
+
+            <p class="kicker">
+
+                Incident Overview
+
+            </p>
+
             <dl>
-                <dt>Signal</dt>
-                <dd>Intermittent timeout exceptions</dd>
-                <dt>Stack</dt>
-                <dd>Java 17, Spring Boot, IBM MQ, Oracle, Splunk, Resilience4j</dd>
+
+                <dt>Issue</dt>
+
+                <dd>
+
+                    Intermittent downstream timeouts
+
+                </dd>
+
+                <dt>Technology</dt>
+
+                <dd>
+
+                    Java 17<br>
+
+                    Spring Boot<br>
+
+                    Splunk<br>
+
+                    Resilience4j
+
+                </dd>
+
                 <dt>Outcome</dt>
-                <dd>Automatic recovery from transient failures</dd>
+
+                <dd>
+
+                    Automatic recovery from transient failures
+
+                </dd>
+
             </dl>
+
         </aside>
-        <div><h2>Incident context</h2>
-            <p>Customer-facing backend services depended on multiple internal systems for policy, member, and account
-                data. When requests failed in production, they affected customer journeys and created work for
-                operational teams.</p>
-            <h2>The problem</h2>
-            <p>An API began failing intermittently while waiting on a downstream enterprise service. The issue could not
-                be reliably reproduced in lower environments, so a production-safe investigation was necessary before
-                any code change was considered.</p>
-            <h2>Investigation and solution</h2>
-            <p>I began with evidence: structured JSON logs in Splunk made it possible to trace affected requests and
-                compare successful versus failed paths. The failures consistently occurred when the dependency
-                experienced temporary response delays.</p>
-            <p>After validating that these were transient—not permanent—failures, I implemented a retry strategy with
-                Resilience4j. The configuration was tested to improve recovery while avoiding duplicate processing and
-                unnecessary load on the dependency, then monitored after release.</p>
-            <h2>Engineering decisions</h2>
+
+        <div>
+
+            <h2>Executive Summary</h2>
+
+            <p>
+
+                Production systems occasionally fail in ways that cannot be reproduced in
+                development or test environments. This project focused on investigating an
+                intermittent production issue affecting a customer-facing API where requests
+                would occasionally fail because of temporary downstream response delays.
+
+            </p>
+
+            <p>
+
+                Rather than introducing broad architectural changes, I investigated the failure
+                pattern using structured logging and Splunk, determined that the issue resulted
+                from transient—not permanent—communication failures, and implemented a targeted
+                retry strategy using Resilience4j. The resulting solution improved application
+                resilience while preserving existing business behaviour and minimizing delivery
+                risk.
+
+            </p>
+
+            <h2>Business Context</h2>
+
+            <p>
+
+                The backend service formed part of a life insurance platform responsible for
+                serving customer-facing requests that depended on multiple enterprise systems,
+                including policy, member, and account services.
+
+            </p>
+
+            <p>
+
+                Reliable communication between these systems was essential because failures
+                directly affected customer journeys and generated additional work for support
+                and operational teams. Maintaining high availability therefore required both
+                robust application design and efficient production incident investigation.
+
+            </p>
+
+            <h2>Production Incident</h2>
+
+            <p>
+
+                An API began failing intermittently while communicating with one of its
+                downstream enterprise services. The failures appeared inconsistent and could
+                not be reproduced reliably in lower environments, making traditional debugging
+                approaches ineffective.
+
+            </p>
+
+            <p>
+
+                Because the issue occurred only under production conditions, engineering
+                decisions needed to be based on production evidence rather than assumptions.
+                Any proposed solution also needed to avoid introducing unnecessary risk by
+                changing business logic or customer-facing API behaviour.
+
+            </p>
+
+            <p>
+
+                The challenge was therefore twofold:
+
+            </p>
+
             <ul>
-                <li><strong>Structured logging:</strong> searchable fields, timestamps, and request context shortened
-                    root-cause analysis.
+
+                <li>
+
+                    Identify the actual failure pattern without disrupting production traffic.
+
                 </li>
-                <li><strong>Retry:</strong> gave transient communication errors a controlled recovery path.</li>
-                <li><strong>No circuit breaker initially:</strong> retry addressed the observed failure pattern with
-                    lower delivery complexity; broader protection was reserved for future scale needs.
+
+                <li>
+
+                    Implement a safe recovery mechanism only after confirming that the failures
+                    were genuinely transient.
+
                 </li>
+
             </ul>
-            <h2>Outcome</h2>
-            <div class="result"><b>RCA</b>
-                <p>moved from guesswork to evidence-led investigation<br><strong>Automatic recovery for transient
-                    failures</strong></p></div>
-            <p>The service became more resilient to temporary downstream issues, investigations became faster, and the
-                team had a clearer operational pattern for handling similar failures.</p>
-            <h2>What I would improve today</h2>
-            <p>I would complement retry with circuit breakers and bulkheads, propagate correlation IDs across services,
-                add OpenTelemetry tracing and SLO dashboards, and configure automated alerts for failure and latency
-                trends.</p>
-            <h2>Key lesson</h2>
-            <p>Observability is an engineering capability. A small, measured resilience change can be more valuable than
-                a broad architecture rewrite when it is grounded in production evidence.</p>
-            <h2>Recruiter summary</h2>
-            <p>Used structured logs and Splunk to root-cause an intermittent production timeout, then shipped a targeted
-                Resilience4j retry strategy—turning a hard-to-reproduce incident into an automatically recovering,
-                well-understood failure mode.</p></div>
+            <h2>My Engineering Ownership</h2>
+
+            <p>
+
+                I was responsible for investigating the production failures, identifying the
+                underlying failure pattern, evaluating appropriate resilience strategies, and
+                implementing a production-safe solution that improved reliability without
+                changing business behaviour or introducing unnecessary operational risk.
+
+            </p>
+
+            <p>
+
+                Rather than treating the issue as an isolated exception, I approached it as a
+                production reliability problem. The objective was to understand why failures
+                occurred, determine whether recovery could be automated safely, and validate
+                that any solution improved customer experience without negatively affecting
+                downstream systems.
+
+            </p>
+
+            <p>
+
+                My responsibilities included:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Analyzing production logs to identify common characteristics across failed
+                    requests.
+
+                </li>
+
+                <li>
+
+                    Comparing successful and failed execution paths to isolate the point of
+                    failure.
+
+                </li>
+
+                <li>
+
+                    Determining whether failures were transient or permanent before selecting a
+                    recovery strategy.
+
+                </li>
+
+                <li>
+
+                    Implementing a controlled retry mechanism using Resilience4j.
+
+                </li>
+
+                <li>
+
+                    Validating production behaviour after deployment through continued monitoring.
+
+                </li>
+
+                <li>
+
+                    Collaborating with the team during investigation, testing, deployment, and
+                    post-release verification.
+
+                </li>
+
+            </ul>
+
+            <h2>Investigation Process</h2>
+
+            <p>
+
+                Because the issue could not be reproduced consistently outside production,
+                application logs became the primary source of evidence. Instead of relying on
+                assumptions, I analyzed structured JSON logs within Splunk to reconstruct the
+                lifecycle of affected requests.
+
+            </p>
+
+            <p>
+
+                Reviewing timestamps, request context, exception details, and downstream
+                responses revealed that failures consistently occurred while waiting for a
+                particular dependency. Comparing successful and unsuccessful requests showed
+                that the downstream service eventually recovered without manual intervention,
+                indicating a transient communication issue rather than a permanent application
+                failure.
+
+            </p>
+
+            <p>
+
+                The investigation followed a structured process:
+
+            </p>
+
+            <ol>
+
+                <li>
+
+                    Collect production evidence from structured application logs.
+
+                </li>
+
+                <li>
+
+                    Compare successful and failed request executions.
+
+                </li>
+
+                <li>
+
+                    Identify recurring failure patterns and affected dependencies.
+
+                </li>
+
+                <li>
+
+                    Determine whether failures represented transient or permanent conditions.
+
+                </li>
+
+                <li>
+
+                    Select the least risky engineering solution based on observed behaviour.
+
+                </li>
+
+                <li>
+
+                    Validate the solution through testing and production monitoring.
+
+                </li>
+
+            </ol>
+
+            <h2>Reliability Strategy</h2>
+
+            <p>
+
+                The investigation demonstrated that requests generally succeeded if the
+                downstream dependency had slightly more time to recover. This made a controlled
+                retry strategy more appropriate than attempting to redesign the application or
+                introduce unnecessary complexity.
+
+            </p>
+
+            <p>
+
+                Instead of modifying business workflows, the solution focused on improving
+                communication reliability between services. Recoverable failures were given a
+                limited opportunity to succeed automatically, reducing customer-visible errors
+                without affecting successful requests.
+
+            </p>
+
+            <p>
+
+                This approach improved resilience while keeping the implementation focused,
+                predictable, and suitable for the observed production behaviour.
+
+            </p>
+
+            <h2>Key Engineering Decisions</h2>
+
+            <h3>Evidence before implementation</h3>
+
+            <p>
+
+                Production incidents often generate many possible explanations. Rather than
+                making speculative code changes, engineering decisions were based entirely on
+                observable production data collected through structured logging and Splunk
+                analysis.
+
+            </p>
+
+            <h3>Retry only transient failures</h3>
+
+            <p>
+
+                Retries are beneficial only when failures are temporary. Applying retries to
+                permanent failures increases latency, consumes additional resources, and may
+                create duplicate processing. The investigation confirmed that the observed
+                timeouts were transient, making retry an appropriate recovery mechanism.
+
+            </p>
+
+            <h3>Controlled retry behaviour</h3>
+
+            <p>
+
+                The retry policy was intentionally conservative. Configuration balanced recovery
+                against the risk of placing unnecessary load on downstream services, ensuring
+                that retries improved reliability without creating additional operational
+                problems.
+
+            </p>
+
+            <h3>Avoid unnecessary complexity</h3>
+
+            <p>
+
+                Although resilience patterns such as circuit breakers provide additional
+                protection, the observed production behaviour did not justify introducing them
+                immediately. A targeted retry strategy addressed the actual failure mode while
+                keeping the solution easier to understand, validate, and maintain.
+
+            </p>
+
+            <h2>Production Validation</h2>
+
+            <p>
+
+                Following implementation, the application was monitored to verify that requests
+                recovered successfully from transient downstream delays while continuing to
+                behave correctly under normal operating conditions.
+
+            </p>
+
+            <p>
+
+                Structured logging remained central to this validation process. Production logs
+                confirmed that retries occurred only when expected, successful requests
+                continued unaffected, and the application maintained consistent business
+                behaviour after deployment.
+
+            </p>
+            <h2>Results</h2>
+
+            <div class="result">
+
+                <b>Reliable</b>
+
+                <p>
+
+                    <strong>Automatic recovery from transient failures</strong><br>
+
+                    Customer requests that previously failed because of temporary downstream
+                    delays could now recover automatically without requiring manual
+                    intervention.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>Faster RCA</b>
+
+                <p>
+
+                    <strong>Evidence-driven investigations</strong><br>
+
+                    Structured logging and Splunk analysis replaced guesswork with a
+                    repeatable investigation process, significantly improving root cause
+                    analysis for production incidents.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>Resilient</b>
+
+                <p>
+
+                    <strong>Improved production stability</strong><br>
+
+                    The targeted retry strategy increased application resilience while
+                    preserving existing business logic, API behaviour, and downstream
+                    integration contracts.
+
+                </p>
+
+            </div>
+
+            <p>
+
+                Beyond resolving a single production issue, this work improved the team's
+                operational approach to troubleshooting. Structured observability and
+                evidence-based decision making became central to how similar incidents were
+                investigated, reducing the time required to understand production behaviour and
+                implement appropriate corrective actions.
+
+            </p>
+
+            <h2>Lessons Learned</h2>
+
+            <p>
+
+                This project reinforced that production reliability begins with observability.
+                Without high-quality logs and measurable evidence, even experienced engineers
+                can spend significant time pursuing incorrect assumptions. The fastest path to
+                resolution is often understanding the failure before attempting to eliminate it.
+
+            </p>
+
+            <p>
+
+                Several engineering principles proved especially valuable:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Investigate production incidents using evidence rather than assumptions.
+
+                </li>
+
+                <li>
+
+                    Differentiate transient failures from permanent failures before selecting a
+                    recovery strategy.
+
+                </li>
+
+                <li>
+
+                    Apply resilience patterns selectively based on observed system behaviour rather
+                    than using them by default.
+
+                </li>
+
+                <li>
+
+                    Invest in structured logging because production debugging depends on the quality
+                    of available operational data.
+
+                </li>
+
+                <li>
+
+                    Prioritize simple, well-targeted solutions over introducing unnecessary
+                    architectural complexity.
+
+                </li>
+
+            </ul>
+
+            <h2>What I Would Improve Today</h2>
+
+            <p>
+
+                If I were evolving the same service today, I would strengthen its observability
+                and resilience capabilities while maintaining the same principle of introducing
+                complexity only where it provides measurable value.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Propagate correlation IDs across all downstream services for complete request
+                    traceability.
+
+                </li>
+
+                <li>
+
+                    Introduce OpenTelemetry distributed tracing alongside structured logging for
+                    end-to-end visibility.
+
+                </li>
+
+                <li>
+
+                    Configure service-level objectives (SLOs) and dashboards to monitor latency,
+                    failure rates, and retry behaviour.
+
+                </li>
+
+                <li>
+
+                    Implement automated alerts for abnormal timeout trends before customer impact
+                    becomes significant.
+
+                </li>
+
+                <li>
+
+                    Introduce circuit breakers and bulkheads where dependency behaviour or traffic
+                    patterns justify additional protection.
+
+                </li>
+
+                <li>
+
+                    Perform controlled fault-injection testing to validate resilience under
+                    production-like failure scenarios.
+
+                </li>
+
+            </ul>
+
+            <h2>Recruiter Summary</h2>
+
+            <p>
+
+                Investigated an intermittent production incident affecting a customer-facing
+                insurance API by using structured logging and Splunk to identify a transient
+                downstream timeout pattern. Implemented a targeted Resilience4j retry strategy
+                that enabled automatic recovery from temporary failures, improved production
+                reliability, accelerated root cause analysis, and preserved existing business
+                behaviour without introducing unnecessary architectural complexity.
+
+            </p>
+
+        </div>
+
     </section>
+
 </main>
-<footer class="footer shell"><p>© <span class="year"></span> Pravin.</p><a href="../index.html">Portfolio home</a>
+
+<footer class="footer shell">
+
+    <p>
+        © <span class="year"></span> Pravin.
+    </p>
+
+    <a href="../index.html">
+        Portfolio home
+    </a>
+
 </footer>
+
 <script src="../script.js"></script>
+
 </body>
+
 </html>

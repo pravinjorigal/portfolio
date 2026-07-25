@@ -1,109 +1,722 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="An Oracle SQL optimization case study by Pravin.">
-    <title>SQL Optimization | Pravin</title>
+
+    <meta name="description"
+          content="An enterprise forms platform modernization case study by Pravin, covering Spring Boot, Java 17, Contentful CMS, Redis caching, REST APIs, and production delivery.">
+
+    <title>Enterprise Forms Platform Modernization | Pravin Jorigal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
           rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 <body>
+
 <header class="site-header">
-    <nav class="nav shell"><a class="wordmark" href="../index.html">Pravin Jorigal</a><a class="button quiet"
-                                                                                         href="../index.html#projects">←
-        All case studies</a></nav>
+
+    <nav class="nav shell">
+
+        <a class="wordmark" href="../index.html">
+
+            Pravin Jorigal
+
+        </a>
+
+        <a class="button quiet" href="../index.html#projects">
+
+            ← All case studies
+
+        </a>
+
+    </nav>
+
 </header>
+
 <main class="case-page shell">
-    <section class="case-hero reveal"><p class="kicker">08 / Data · Banking onboarding</p>
-        <h1>SQL Optimization</h1>
-        <p class="lead">Rewrote slow Oracle queries and indexing behind a banking search and export feature, turning
-            multi-second table scans into fast, predictable lookups.</p>
-        <div class="case-meta"><span>Role · Backend Engineer</span><span>Domain · Banking onboarding</span><span>Production · Yes</span><span>Stack · Oracle SQL, MyBatis, Spring Boot</span>
+
+    <section class="case-hero reveal">
+
+        <p class="kicker">
+
+            08 / Enterprise Modernization · Platform Engineering
+
+        </p>
+
+        <h1>
+
+            Enterprise Forms Platform Modernization
+
+        </h1>
+
+        <p class="lead">
+
+            Modernized an enterprise forms platform by replacing a tightly coupled legacy
+            content management solution with a headless CMS, redesigning backend APIs,
+            eliminating legacy metadata dependencies, and delivering the solution through
+            production with end-to-end backend ownership.
+
+        </p>
+
+        <div class="case-meta">
+
+<span>
+
+Role · Senior Backend Engineer
+
+</span>
+
+            <span>
+
+Domain · Life Insurance
+
+</span>
+
+            <span>
+
+Production · Yes
+
+</span>
+
+            <span>
+
+Stack · Java 17, Spring Boot, Contentful, Redis
+
+</span>
+
+            <span>
+
+Focus · Platform Modernization
+
+</span>
+
         </div>
+
     </section>
+
     <section class="case-content reveal">
-        <aside><p class="kicker">At a glance</p>
+
+        <aside>
+
+            <p class="kicker">
+
+                At a glance
+
+            </p>
+
             <dl>
-                <dt>Feature</dt>
-                <dd>Advanced search &amp; bulk Excel export</dd>
-                <dt>Stack</dt>
-                <dd>Oracle SQL, MyBatis, Spring Boot, Jenkins</dd>
-                <dt>Focus</dt>
-                <dd>Query design &amp; indexing</dd>
+
+                <dt>
+
+                    Platform
+
+                </dt>
+
+                <dd>
+
+                    Enterprise Forms Platform
+
+                </dd>
+
+                <dt>
+
+                    Technology
+
+                </dt>
+
+                <dd>
+
+                    Java 17, Spring Boot, Contentful, Redis, Oracle, Apigee
+
+                </dd>
+
+                <dt>
+
+                    Primary Goal
+
+                </dt>
+
+                <dd>
+
+                    Modernize legacy forms management while preserving business functionality
+
+                </dd>
+
             </dl>
+
         </aside>
-        <div><h2>Business context</h2>
-            <p>A banking onboarding platform exposed an advanced search feature and a bulk Excel export used by internal
-                operations teams to pull large, filtered customer datasets. As data volume grew, both features slowed
-                down, and the export in particular risked timing out on large result sets.</p>
-            <h2>Constraints</h2>
-            <p>The schema was shared with several other services and couldn't be redesigned outright. Any query changes
-                had to preserve existing filter and sort behavior exactly, and changes had to roll out through the
-                platform's standard release process without downtime.</p>
-            <h2>My contribution</h2>
-            <p>I profiled the slow queries, redesigned indexing and query structure for the search path, and built
-                reusable Oracle database functions so multiple call sites could share the same optimized logic instead
-                of duplicating ad-hoc SQL.</p>
-            <h2>Solution</h2>
-            <p>Working with MyBatis, I replaced several queries that scanned wide tables with versions that used
-                composite indexes matching the actual filter and sort combinations the UI allowed. For the export
-                feature, I moved from row-by-row fetching to batched retrieval, so large datasets could be streamed to
-                Excel without holding the entire result set in memory.</p>
-            <h2>Engineering decisions</h2>
+
+        <div>
+
+            <h2>
+
+                Executive Summary
+
+            </h2>
+
+            <p>
+
+                The Forms Modernization initiative transformed a legacy forms platform into a
+                modern Spring Boot service backed by Contentful, a headless content management
+                system. Beyond migrating technology, the project redesigned how form metadata
+                was managed, reduced dependence on legacy Oracle metadata, introduced
+                performance-conscious caching, and exposed stable REST APIs for multiple client
+                applications.
+
+            </p>
+
+            <p>
+
+                As the primary backend engineer for this module, I owned backend implementation
+                from API development through production deployment, including enterprise
+                integrations, Redis caching, API gateway configuration, QA support, UAT support,
+                and post-production issue resolution.
+
+            </p>
+
+            <h2>
+
+                Business Context
+
+            </h2>
+
+            <p>
+
+                The existing forms platform had evolved over several years and relied on legacy
+                Java technology, IBM WebSphere, JSP-based applications, and an older content
+                management solution. Form metadata was distributed across multiple systems,
+                making enhancements slower and increasing operational complexity whenever new
+                forms or business changes were introduced.
+
+            </p>
+
+            <p>
+
+                The modernization initiative sought to create a simpler and more maintainable
+                architecture by introducing Spring Boot microservices, REST APIs, and
+                Contentful as the primary content management platform. At the same time, the
+                new solution needed to preserve existing business behaviour so that multiple
+                consumer applications could transition without disruption.
+
+            </p>
+
+            <h2>
+
+                Modernization Challenge
+
+            </h2>
+
+            <p>
+
+                The project was not simply a technology migration. Existing consumers depended
+                on stable API behaviour while business users relied on familiar forms and
+                document workflows. The challenge was to modernize the platform without forcing
+                changes on downstream applications or disrupting day-to-day business
+                operations.
+
+            </p>
+
+            <p>
+
+                Another significant challenge involved replacing legacy Oracle-driven form
+                metadata with information derived directly from Contentful. During migration,
+                both approaches needed to coexist until all forms had transitioned to the new
+                platform, requiring careful design to maintain consistency throughout the
+                modernization effort.
+
+            </p>
+            <h2>
+
+                My Engineering Ownership
+
+            </h2>
+
+            <p>
+
+                I was the primary backend engineer responsible for the Forms Modernization
+                service. Working alongside a frontend engineer and the broader technical
+                leadership, I owned backend implementation from development through production,
+                ensuring the new platform integrated cleanly with enterprise systems while
+                maintaining compatibility with existing business workflows.
+
+            </p>
+
+            <p>
+
+                My responsibilities extended beyond coding. They included designing REST APIs,
+                integrating Contentful, implementing Redis caching, configuring Apigee,
+                supporting QA and UAT, coordinating production releases, and resolving
+                production issues after deployment. This provided complete visibility into the
+                service throughout its lifecycle rather than ownership of only isolated backend
+                tasks.
+
+            </p>
+
             <ul>
-                <li><strong>Composite indexes over single-column indexes:</strong> real queries filtered and sorted on
-                    multiple columns together, so indexes were designed around actual query shapes, not individual
-                    columns in isolation.
+
+                <li>
+
+                    Designed and implemented Spring Boot REST APIs.
+
                 </li>
-                <li><strong>Reusable database functions:</strong> centralizing shared logic in Oracle functions reduced
-                    duplicated, slightly-inconsistent SQL across services.
+
+                <li>
+
+                    Integrated the platform with Contentful CMS.
+
                 </li>
-                <li><strong>Batched export:</strong> streaming results in batches kept memory use predictable regardless
-                    of export size.
+
+                <li>
+
+                    Implemented Redis caching for processed metadata.
+
                 </li>
-                <li><strong>No schema migration:</strong> indexing and query changes delivered most of the benefit with
-                    far less risk than a schema redesign under a shared-schema constraint.
+
+                <li>
+
+                    Configured Apigee proxies and API products.
+
                 </li>
+
+                <li>
+
+                    Created mock APIs to enable parallel frontend development.
+
+                </li>
+
+                <li>
+
+                    Supported QA, UAT, production deployment, and post-release issue resolution.
+
+                </li>
+
+                <li>
+
+                    Collaborated with infrastructure teams for secure routing and production
+                    configuration.
+
+                </li>
+
             </ul>
-            <h2>Challenges</h2>
+
+            <h2>
+
+                Modernization Strategy
+
+            </h2>
+
+            <p>
+
+                Rather than attempting a high-risk replacement of the legacy platform, the
+                modernization followed an incremental approach. Existing consumers continued to
+                receive stable REST APIs while backend implementation gradually transitioned
+                away from the legacy content management system toward Contentful.
+
+            </p>
+
+            <p>
+
+                One important objective was reducing architectural duplication. Historically,
+                form metadata was partially maintained within Oracle while content itself lived
+                elsewhere. The new design treated Contentful as the primary content source,
+                allowing business metadata to be derived directly from CMS content instead of
+                maintaining parallel metadata structures wherever possible.
+
+            </p>
+
+            <p>
+
+                This approach simplified long-term maintenance while allowing legacy metadata to
+                coexist during the migration period until all forms had been successfully
+                transitioned.
+
+            </p>
+
+            <h2>
+
+                Key Engineering Decisions
+
+            </h2>
+
+            <h3>
+
+                1. Adopt a Headless CMS
+
+            </h3>
+
+            <p>
+
+                Replacing the legacy content management platform with Contentful separated
+                content management from application deployment. Business users could manage
+                forms and related metadata without requiring backend code changes or application
+                releases, improving maintainability and reducing operational overhead.
+
+            </p>
+
+            <h3>
+
+                2. Derive Business Metadata from Contentful
+
+            </h3>
+
+            <p>
+
+                Instead of continuing to depend on Oracle metadata for determining form types,
+                the backend extracted and transformed metadata directly from Contentful's
+                content model. This reduced duplication, simplified the architecture, and
+                moved the platform toward a single source of truth for form information while
+                remaining compatible with legacy data during migration.
+
+            </p>
+
+            <h3>
+
+                3. Cache Processed Metadata Instead of Raw CMS Responses
+
+            </h3>
+
+            <p>
+
+                Contentful responses contained deeply nested structures designed for content
+                management rather than API consumption. Rather than caching entire CMS
+                responses, the application cached only processed business metadata such as form
+                types, categories, keywords, and states. This reduced repeated parsing,
+                improved response times, and kept the cache focused on information the
+                application actually consumed.
+
+            </p>
+
+            <h3>
+
+                4. Do Not Cache PDF Documents
+
+            </h3>
+
+            <p>
+
+                Only metadata was cached. PDF documents were always retrieved directly from
+                Contentful so users consistently received the latest approved version. This
+                avoided stale document downloads while preventing large binary files from
+                occupying unnecessary cache memory.
+
+            </p>
+
+            <h3>
+
+                5. Maintain Stable API Contracts
+
+            </h3>
+
+            <p>
+
+                Although backend implementation changed significantly, REST APIs were designed
+                to remain stable for consuming applications. Preserving API contracts reduced
+                migration risk and allowed frontend applications to adopt the modernized
+                platform without unnecessary changes.
+
+            </p>
+
+            <h2>
+
+                Enterprise Integrations
+
+            </h2>
+
+            <p>
+
+                The Forms Modernization service acted as an integration layer between multiple
+                enterprise systems. Depending on the authenticated user's context, the backend
+                combined business information from internal services with content managed in
+                Contentful before returning a unified response to the client application.
+
+            </p>
+
+            <p>
+
+                For authenticated users, the service integrated with enterprise authentication
+                and business APIs before determining which forms were applicable. Member,
+                employer, and broker users followed different business rules, while Contentful
+                provided the centralized content and metadata required to build the final API
+                response.
+
+            </p>
+
+            <p>
+
+                This integration-centric design allowed business rules, authentication, and
+                content management to remain independent while exposing a consistent REST API
+                to frontend applications.
+
+            </p>
+
+            <h2>
+
+                Production Rollout & Validation
+
+            </h2>
+
+            <p>
+
+                The modernization effort extended well beyond implementation. After completing
+                development, I supported functional testing, integration testing, QA, UAT,
+                production deployment, smoke testing, and post-release monitoring to ensure the
+                new platform behaved consistently under real production workloads.
+
+            </p>
+
+            <p>
+
+                Following deployment, production support included investigating reported
+                issues, validating API behaviour, resolving defects, and confirming that new
+                forms and metadata were correctly served through the modernized platform.
+                Working across the entire delivery lifecycle helped ensure modernization was
+                successful not only from a development perspective but also from an operational
+                one.
+
+            </p>
+            <h2>
+
+                Results
+
+            </h2>
+
+            <div class="result">
+
+                <b>
+
+                    Modernized Platform
+
+                </b>
+
+                <p>
+
+                    <strong>Simplified enterprise architecture</strong><br>
+
+                    Successfully modernized a legacy forms platform by introducing Spring Boot,
+                    REST APIs, and a headless CMS while maintaining compatibility with existing
+                    business workflows throughout the migration.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>
+
+                    Reduced Legacy Dependencies
+
+                </b>
+
+                <p>
+
+                    <strong>Moved toward a single source of truth</strong><br>
+
+                    Derived business metadata directly from Contentful wherever applicable,
+                    reducing reliance on legacy Oracle metadata and simplifying long-term platform
+                    maintenance.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>
+
+                    Production Ready
+
+                </b>
+
+                <p>
+
+                    <strong>Delivered end-to-end ownership</strong><br>
+
+                    Supported the service from implementation through QA, UAT, production release,
+                    and post-production support, ensuring the modernized platform operated reliably
+                    in a production environment.
+
+                </p>
+
+            </div>
+
+            <p>
+
+                Beyond the technology upgrade, the project established a foundation for future
+                enhancements by separating content management from application logic. Business
+                users could manage forms independently while backend services remained focused
+                on business rules, integrations, and API delivery.
+
+            </p>
+
+            <h2>
+
+                Lessons Learned
+
+            </h2>
+
+            <p>
+
+                This project reinforced that successful modernization is rarely about replacing
+                technology alone. Enterprise systems often have numerous downstream consumers,
+                business processes, and operational dependencies that must continue functioning
+                throughout the migration.
+
+            </p>
+
+            <p>
+
+                Several engineering principles proved especially valuable:
+
+            </p>
+
             <ul>
-                <li>Identifying which of several similar-looking queries were actually responsible for the worst-case
-                    slowdowns.
+
+                <li>
+
+                    Modernize incrementally rather than attempting a complete replacement.
+
                 </li>
-                <li>Adding indexes without degrading write performance on tables used by other services.</li>
-                <li>Validating that optimized queries returned identical results to the originals across edge-case
-                    filters.
+
+                <li>
+
+                    Preserve stable API contracts whenever possible.
+
                 </li>
+
+                <li>
+
+                    Establish a clear source of truth instead of maintaining duplicated business
+                    metadata.
+
+                </li>
+
+                <li>
+
+                    Cache only the information that provides measurable value.
+
+                </li>
+
+                <li>
+
+                    Treat production rollout as part of the engineering solution, not simply the
+                    final deployment step.
+
+                </li>
+
             </ul>
-            <h2>Business impact</h2>
-            <p>Search responses became fast enough for interactive use, and the export feature stopped being a timeout
-                risk for large pulls—reducing support escalations from operations teams and removing a recurring source
-                of manual workarounds.</p>
-            <h2>Production support story</h2>
-            <p>Before the change, operations occasionally reported exports "hanging" on large date ranges; investigation
-                traced this to full table scans rather than a code defect. After the fix, the same date ranges completed
-                reliably, and the underlying indexing pattern was reused for a later reporting feature with the same
-                access pattern.</p>
-            <h2>Lessons learned</h2>
-            <p>Most SQL performance problems are query-shape problems, not "the database is slow." Designing indexes
-                around how the application actually filters and sorts—rather than one index per column—was the change
-                that mattered most.</p>
-            <h2>What I would improve today</h2>
-            <p>I would add query plan monitoring in lower environments before release, load-test the export path with
-                representative data volumes, and consider read replicas for reporting-style queries to isolate them from
-                transactional traffic.</p>
-            <h2>Recruiter summary</h2>
-            <p>Diagnosed and fixed slow Oracle queries behind a banking search and export feature through composite
-                indexing and batched retrieval, removing a recurring operational pain point without a schema
-                redesign.</p></div>
+
+            <h2>
+
+                What I Would Improve Today
+
+            </h2>
+
+            <p>
+
+                If implementing this platform today, I would enhance its operational
+                observability and automation while preserving the same architectural principles.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Introduce OpenTelemetry-based distributed tracing across enterprise service
+                    calls.
+
+                </li>
+
+                <li>
+
+                    Expose detailed metrics for Contentful latency, Redis cache effectiveness, and
+                    API response times using Micrometer and Prometheus.
+
+                </li>
+
+                <li>
+
+                    Use event-driven cache invalidation where supported to reduce dependence on
+                    time-based expiration.
+
+                </li>
+
+                <li>
+
+                    Implement automated contract testing to validate API compatibility throughout
+                    future modernization efforts.
+
+                </li>
+
+                <li>
+
+                    Expand resilience patterns for external integrations using circuit breakers,
+                    fallback strategies, and improved operational dashboards where appropriate.
+
+                </li>
+
+            </ul>
+
+            <h2>
+
+                Recruiter Summary
+
+            </h2>
+
+            <p>
+
+                Served as the primary backend engineer for an enterprise forms platform
+                modernization initiative, replacing a tightly coupled legacy content management
+                solution with a Spring Boot service integrated with Contentful CMS. Designed
+                REST APIs, implemented Redis caching, eliminated legacy metadata dependencies
+                where applicable, configured enterprise API gateway integrations, supported
+                production releases, and provided ongoing production support. The project
+                demonstrates end-to-end backend ownership, modernization strategy, enterprise
+                integration, and production-focused engineering.
+
+            </p>
+
+        </div>
+
     </section>
+
 </main>
-<footer class="footer shell"><p>© <span class="year"></span> Pravin.</p><a href="../index.html">Portfolio home</a>
+
+<footer class="footer shell">
+
+    <p>
+
+        © <span class="year"></span> Pravin.
+
+    </p>
+
+    <a href="../index.html">
+
+        Portfolio home
+
+    </a>
+
 </footer>
+
 <script src="../script.js"></script>
+
 </body>
+
 </html>

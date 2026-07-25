@@ -1,88 +1,714 @@
 <!doctype html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="A performance engineering case study by Pravin.">
-    <title>Member Certificate Booklets | Pravin</title>
+
+    <meta name="description"
+          content="Performance engineering case study demonstrating how production API latency was reduced by approximately 75% through concurrency, caching, and evidence-based optimization.">
+
+    <title>Member Certificate Booklets | Pravin Jorigal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-          rel="stylesheet">
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+            rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 <body>
+
 <header class="site-header">
-    <nav class="nav shell"><a class="wordmark" href="../index.html">Pravin Jorigal</a><a class="button quiet"
-                                                                                         href="../index.html#projects">←
-        All case studies</a></nav>
+
+    <nav class="nav shell">
+
+        <a class="wordmark" href="../index.html">
+            Pravin Jorigal
+        </a>
+
+        <a class="button quiet" href="../index.html#projects">
+            ← All case studies
+        </a>
+
+    </nav>
+
 </header>
+
 <main class="case-page shell">
-    <section class="case-hero reveal"><p class="kicker">01 / Performance engineering · Life insurance</p>
-        <h1>Member Certificate Booklets</h1>
-        <p class="lead">A production performance turnaround: reducing P90 API latency from approximately six seconds to
-            1.5 seconds without changing user-facing behaviour or reworking the platform architecture.</p>
-        <div class="case-meta"><span>Role · Backend Engineer</span><span>Domain · Life insurance</span><span>Duration · Multi-sprint delivery against a fixed release date</span><span>Team · Shared backend pod</span><span>Production · Yes</span><span>Architecture · Generic only</span>
+
+    <section class="case-hero reveal">
+
+        <p class="kicker">
+
+            01 / Performance Engineering · Enterprise Backend Systems
+
+        </p>
+
+        <h1>
+
+            Member Certificate Booklets
+
+        </h1>
+
+        <p class="lead">
+
+            Diagnosed and resolved a production performance bottleneck in a
+            customer-facing document generation API by combining evidence-based
+            investigation, asynchronous execution using
+            <code>CompletableFuture</code>, and Redis caching. The solution reduced
+            P90 response time from approximately six seconds to 1.5 seconds while
+            preserving existing API contracts and meeting a fixed production release
+            deadline.
+
+        </p>
+
+        <div class="case-meta">
+
+            <span>Role · Backend Engineer</span>
+
+            <span>Domain · Life Insurance</span>
+
+            <span>Environment · Production</span>
+
+            <span>Focus · Performance Optimization</span>
+
+            <span>Result · ~75% Lower P90 Latency</span>
+
         </div>
+
     </section>
+
     <section class="case-content reveal">
-        <aside><p class="kicker">At a glance</p>
-            <dl>
-                <dt>Before</dt>
-                <dd>P90 ~6s; worst case ~8.5s</dd>
-                <dt>After</dt>
-                <dd>P90 ~1.5s</dd>
-                <dt>Stack</dt>
-                <dd>Java 17, Spring Boot, Redis, Oracle, CompletableFuture, Splunk</dd>
-            </dl>
-        </aside>
-        <div><h2>The problem</h2>
-            <p>This customer-facing certificate-document workflow depended on several enterprise services for member,
-                group, and coverage data. Formal performance tests showed a best case of roughly four seconds, P90 near
-                six seconds, and a worst case around 8.5 seconds—well outside a required two-second SLA.</p>
-            <p>The release date was already committed. The response contract had to remain compatible, all downstream
-                calls remained mandatory, and a broad redesign would have introduced unacceptable risk.</p>
-            <h2>How I approached it</h2>
-            <p>I started with timestamp-based instrumentation rather than assumptions. Timing each major dependency
-                exposed redundant work and showed which calls could safely run after the initial member context was
-                established.</p>
-            <p>I parallelized independent downstream requests with <code>CompletableFuture</code>, collecting results
-                only after all required work completed. I also cached stable reference data in Redis, eliminating
-                repeated lookups. Each change was verified through repeated performance testing before it moved forward.
+
+        <aside>
+
+            <p class="kicker">
+
+                Performance Overview
+
             </p>
-            <h2>Why these decisions</h2>
+
+            <dl>
+
+                <dt>Before</dt>
+
+                <dd>
+
+                    P90 ≈ 6 seconds<br>
+
+                    Worst case ≈ 8.5 seconds
+
+                </dd>
+
+                <dt>After</dt>
+
+                <dd>
+
+                    P90 ≈ 1.5 seconds
+
+                </dd>
+
+                <dt>Technology</dt>
+
+                <dd>
+
+                    Java 17<br>
+
+                    Spring Boot<br>
+
+                    Redis<br>
+
+                    Oracle<br>
+
+                    CompletableFuture
+
+                </dd>
+
+            </dl>
+
+        </aside>
+
+        <div>
+
+            <h2>Executive Summary</h2>
+
+            <p>
+
+                This project focused on improving the performance of a production API
+                responsible for generating Member Certificate Booklets within a life insurance
+                platform. Performance testing showed that the service consistently exceeded its
+                required response-time SLA, putting a planned production release at risk.
+
+            </p>
+
+            <p>
+
+                Rather than attempting a large architectural redesign, I investigated the
+                request execution path, identified unnecessary sequential processing, and
+                implemented targeted improvements using asynchronous execution and Redis
+                caching. The resulting solution reduced P90 latency by approximately 75%
+                without changing external API behaviour or downstream integration contracts.
+
+            </p>
+
+            <h2>Business Context</h2>
+
+            <p>
+
+                Generating a Member Certificate Booklet required aggregating information from
+                multiple enterprise systems including member records, policy information,
+                coverage details, and reference data before assembling the final response.
+
+            </p>
+
+            <p>
+
+                Although each downstream dependency was required for a successful response,
+                many of these operations were independent of one another. Over time, the API
+                had evolved into a mostly sequential workflow, causing overall response time to
+                increase as additional business functionality was introduced.
+
+            </p>
+
+            <p>
+
+                The production release date had already been committed. Any solution therefore
+                needed to improve performance while minimizing implementation risk and avoiding
+                breaking changes for existing consumers.
+
+            </p>
+
+            <h2>Performance Challenge</h2>
+
+            <p>
+
+                Initial performance testing showed that the service failed to meet the required
+                two-second SLA.
+
+            </p>
+
+            <p>
+
+                Measured response times were approximately:
+
+            </p>
+
             <ul>
-                <li><strong>Concurrency:</strong> independent calls should not extend end-to-end latency by waiting on
-                    one another.
+
+                <li>
+
+                    Best case: approximately 4 seconds
+
                 </li>
-                <li><strong>Redis:</strong> low-change reference data benefited from simple cache-aside access.</li>
-                <li><strong>Measurement first:</strong> timing data kept the fix targeted and avoided unnecessary
-                    complexity.
+
+                <li>
+
+                    P90 latency: approximately 6 seconds
+
                 </li>
-                <li><strong>No major redesign:</strong> the safest path was to meet the SLA within existing integration
-                    and delivery constraints.
+
+                <li>
+
+                    Worst case: approximately 8.5 seconds
+
                 </li>
+
             </ul>
-            <h2>Outcome</h2>
-            <div class="result"><b>~75%</b>
-                <p>reduction in P90 response time<br><strong>~6s → ~1.5s</strong></p></div>
-            <p>The service met its production SLA, reduced unnecessary downstream utilization, and restored confidence
-                in the release path.</p>
-            <h2>What I would improve today</h2>
-            <p>For a new implementation, I would evaluate Java 21 virtual threads for blocking I/O, a dedicated executor
-                rather than the common pool, OpenTelemetry tracing, downstream circuit breakers and bulkheads, plus
-                service-level latency dashboards.</p>
-            <h2>Key lesson</h2>
-            <p>Performance gains often come from understanding dependency relationships—not from prematurely optimizing
-                code. Small, measurable changes can be safer and more effective than a broad rewrite.</p>
-            <h2>Recruiter summary</h2>
-            <p>Diagnosed a production SLA breach with timing data, then cut P90 latency ~75% (6s → 1.5s) using
-                concurrency and Redis caching—without a redesign, on a fixed release date, with zero customer-facing
-                changes.</p></div>
+
+            <p>
+
+                Because multiple downstream integrations were mandatory, simply removing
+                service calls was not an option. Likewise, introducing a major architectural
+                rewrite shortly before production would have increased delivery risk and delayed
+                the release.
+
+            </p>
+
+            <p>
+
+                The challenge therefore became finding measurable performance improvements
+                within the existing architecture while preserving functional behaviour,
+                integration compatibility, and production stability.
+
+            </p>
+            <h2>My Engineering Ownership</h2>
+
+            <p>
+
+                I was responsible for analyzing the performance bottleneck, identifying
+                optimization opportunities, implementing the required backend changes, and
+                validating that each improvement produced measurable results before being
+                considered for production deployment.
+
+            </p>
+
+            <p>
+
+                Rather than assuming where the latency originated, I approached the problem as
+                a production investigation. Every optimization was driven by measurements,
+                allowing the team to focus engineering effort on the areas that contributed
+                most to overall response time.
+
+            </p>
+
+            <p>
+
+                My responsibilities included:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Analyzing the end-to-end execution flow of the certificate generation API.
+
+                </li>
+
+                <li>
+
+                    Instrumenting request processing to measure the execution time of individual
+                    downstream operations.
+
+                </li>
+
+                <li>
+
+                    Identifying opportunities for safe parallel execution using
+                    <code>CompletableFuture</code>.
+
+                </li>
+
+                <li>
+
+                    Introducing Redis caching for stable reference data that was read frequently
+                    but changed infrequently.
+
+                </li>
+
+                <li>
+
+                    Performing repeated performance testing to validate every optimization before
+                    deployment.
+
+                </li>
+
+                <li>
+
+                    Supporting production rollout and verifying that functional behaviour remained
+                    unchanged after optimization.
+
+                </li>
+
+            </ul>
+
+            <h2>Investigation Process</h2>
+
+            <p>
+
+                The first objective was understanding exactly where the application spent its
+                time. Rather than optimizing code immediately, I added timestamp-based
+                instrumentation around each major dependency to build an execution timeline for
+                every request.
+
+            </p>
+
+            <p>
+
+                This investigation showed that several downstream calls executed sequentially
+                even though they were independent once the initial member context had been
+                retrieved. The execution model effectively accumulated the latency of multiple
+                services instead of allowing those operations to overlap.
+
+            </p>
+
+            <p>
+
+                The investigation followed a straightforward engineering process:
+
+            </p>
+
+            <ol>
+
+                <li>
+
+                    Measure the execution time of every downstream dependency.
+
+                </li>
+
+                <li>
+
+                    Identify redundant work and repeated lookups.
+
+                </li>
+
+                <li>
+
+                    Determine which operations could safely execute concurrently.
+
+                </li>
+
+                <li>
+
+                    Reduce unnecessary database access through caching.
+
+                </li>
+
+                <li>
+
+                    Repeat performance testing after each optimization.
+
+                </li>
+
+                <li>
+
+                    Deploy only after confirming both functional correctness and performance
+                    improvements.
+
+                </li>
+
+            </ol>
+
+            <h2>Performance Strategy</h2>
+
+            <p>
+
+                The optimization strategy focused on reducing unnecessary waiting time rather
+                than rewriting business logic. Existing functionality already satisfied business
+                requirements; the opportunity lay in improving how that work was executed.
+
+            </p>
+
+            <p>
+
+                Two complementary techniques delivered most of the performance improvement:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Executing independent downstream operations concurrently using
+                    <code>CompletableFuture</code>.
+
+                </li>
+
+                <li>
+
+                    Eliminating repeated retrieval of stable reference data through Redis caching.
+
+                </li>
+
+            </ul>
+
+            <p>
+
+                Because these optimizations targeted execution behaviour rather than business
+                logic, they significantly improved response time while preserving existing API
+                contracts and downstream integrations.
+
+            </p>
+
+            <h2>Key Engineering Decisions</h2>
+
+            <h3>Measure before optimizing</h3>
+
+            <p>
+
+                Performance problems are rarely solved effectively through intuition alone.
+                Collecting execution timings first prevented unnecessary code changes and kept
+                the optimization effort focused on the actual bottlenecks rather than perceived
+                ones.
+
+            </p>
+
+            <h3>Parallelize only independent work</h3>
+
+            <p>
+
+                Not every operation can execute concurrently. The initial member context
+                remained a prerequisite for the request, but once that information became
+                available, several downstream service calls no longer depended on one another.
+
+            </p>
+
+            <p>
+
+                Using <code>CompletableFuture</code>, these independent operations could execute
+                simultaneously instead of sequentially, reducing overall response time without
+                changing business behaviour.
+
+            </p>
+
+            <h3>Cache stable reference data</h3>
+
+            <p>
+
+                Some reference information was read frequently but updated infrequently. Rather
+                than repeatedly querying Oracle for identical data, Redis was introduced using
+                a cache-aside approach to reduce unnecessary database access and improve overall
+                request latency.
+
+            </p>
+
+            <p>
+
+                This optimization also reduced load on downstream infrastructure, providing
+                benefits beyond individual request performance.
+
+            </p>
+
+            <h3>Avoid unnecessary architectural change</h3>
+
+            <p>
+
+                Although a larger redesign may have offered additional optimization
+                opportunities, it would also have introduced significant delivery risk shortly
+                before the scheduled production release.
+
+            </p>
+
+            <p>
+
+                The chosen approach deliberately focused on targeted improvements that achieved
+                the required SLA while preserving application stability and minimizing
+                regression risk.
+
+            </p>
+
+            <h2>Production Validation</h2>
+
+            <p>
+
+                Every optimization was validated through repeated performance testing rather
+                than relying on isolated benchmark runs. Response times were compared before and
+                after each change to ensure measurable improvement while confirming that
+                business functionality remained unchanged.
+
+            </p>
+
+            <p>
+
+                Following deployment, production behaviour was monitored to verify that the
+                service continued meeting performance expectations under real enterprise
+                workloads. Because the API contract and business logic were preserved,
+                deployment risk remained low despite the significant performance improvement.
+
+            </p>
+            <h2>Results</h2>
+
+            <div class="result">
+
+                <b>~75%</b>
+
+                <p>
+
+                    <strong>P90 latency reduction</strong><br>
+
+                    Reduced P90 response time from approximately <strong>6 seconds</strong>
+                    to <strong>1.5 seconds</strong>, successfully meeting the required
+                    production SLA.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>SLA</b>
+
+                <p>
+
+                    <strong>Production-ready performance</strong><br>
+
+                    The service achieved its target response time without changing the
+                    external API contract or introducing a large architectural redesign.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>Lower Load</b>
+
+                <p>
+
+                    <strong>Reduced downstream utilization</strong><br>
+
+                    Concurrent execution and Redis caching decreased unnecessary database
+                    access and reduced cumulative waiting across downstream services.
+
+                </p>
+
+            </div>
+
+            <p>
+
+                The improvements extended beyond a single performance metric. By eliminating
+                unnecessary sequential execution and avoiding repeated retrieval of stable
+                reference data, the service became significantly more efficient while preserving
+                existing business behaviour. Most importantly, these gains were achieved within
+                the project's delivery constraints, allowing the planned production release to
+                proceed without compromising stability.
+
+            </p>
+
+            <h2>Lessons Learned</h2>
+
+            <p>
+
+                This project reinforced that effective performance engineering is fundamentally
+                an investigation exercise rather than an optimization exercise. Sustainable
+                improvements come from understanding where time is actually spent, validating
+                assumptions with data, and making targeted changes that address the root cause.
+
+            </p>
+
+            <p>
+
+                Several engineering principles proved especially valuable throughout this work:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Measure system behaviour before proposing solutions.
+
+                </li>
+
+                <li>
+
+                    Optimize request flow before optimizing implementation details.
+
+                </li>
+
+                <li>
+
+                    Execute work concurrently only when dependencies genuinely allow it.
+
+                </li>
+
+                <li>
+
+                    Cache data selectively based on access patterns, data stability, and
+                    consistency requirements.
+
+                </li>
+
+                <li>
+
+                    Prefer incremental, measurable improvements over high-risk architectural
+                    rewrites when working close to production releases.
+
+                </li>
+
+            </ul>
+
+            <h2>What I Would Improve Today</h2>
+
+            <p>
+
+                If I were solving the same problem today, I would build on the existing solution
+                with additional observability and resilience practices that are now common in
+                modern distributed systems.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Use OpenTelemetry distributed tracing to visualize request execution across
+                    multiple downstream services.
+
+                </li>
+
+                <li>
+
+                    Configure dedicated executors for asynchronous workloads instead of relying on
+                    the common thread pool.
+
+                </li>
+
+                <li>
+
+                    Introduce Micrometer metrics and latency dashboards to detect performance
+                    regressions earlier.
+
+                </li>
+
+                <li>
+
+                    Apply circuit breakers, retries, and timeouts around external dependencies
+                    where appropriate.
+
+                </li>
+
+                <li>
+
+                    Evaluate Java 21 virtual threads for blocking I/O workloads after validating
+                    their performance characteristics under production-like load.
+
+                </li>
+
+                <li>
+
+                    Automate continuous performance regression testing within the CI/CD pipeline.
+
+                </li>
+
+            </ul>
+
+            <h2>Recruiter Summary</h2>
+
+            <p>
+
+                Diagnosed and resolved a production performance bottleneck in a customer-facing
+                insurance API by applying evidence-based analysis, asynchronous execution with
+                <code>CompletableFuture</code>, and Redis caching. Reduced P90 response time by
+                approximately 75% (6s → 1.5s), achieved the required production SLA, preserved
+                existing API contracts, and delivered the solution without introducing a risky
+                architectural redesign ahead of a committed release.
+
+            </p>
+
+        </div>
+
     </section>
+
 </main>
-<footer class="footer shell"><p>© <span class="year"></span> Pravin.</p><a href="../index.html">Portfolio home</a>
+
+<footer class="footer shell">
+
+    <p>
+        © <span class="year"></span> Pravin.
+    </p>
+
+    <a href="../index.html">
+        Portfolio home
+    </a>
+
 </footer>
+
 <script src="../script.js"></script>
+
 </body>
+
 </html>

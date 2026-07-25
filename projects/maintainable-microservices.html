@@ -1,89 +1,645 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="A maintainable Spring Boot microservices case study by Pravin.">
-    <title>Maintainable Microservices | Pravin</title>
+
+    <meta name="description"
+          content="Enterprise microservice architecture case study by Pravin Jorigal.">
+
+    <title>Enterprise Microservice Design | Pravin Jorigal</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-          rel="stylesheet">
+
+    <link
+            href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+            rel="stylesheet">
+
     <link rel="stylesheet" href="../style.css">
+
 </head>
+
 <body>
+
 <header class="site-header">
-    <nav class="nav shell"><a class="wordmark" href="../index.html">Pravin Jorigal</a><a class="button quiet"
-                                                                                         href="../index.html#projects">←
-        All case studies</a></nav>
+
+    <nav class="nav shell">
+
+        <a class="wordmark" href="../index.html">
+            Pravin Jorigal
+        </a>
+
+        <a class="button quiet" href="../index.html#projects">
+            ← All case studies
+        </a>
+
+    </nav>
+
 </header>
+
 <main class="case-page shell">
-    <section class="case-hero reveal"><p class="kicker">06 / Architecture · Enterprise microservices</p>
-        <h1>Building Maintainable Spring Boot Services</h1>
-        <p class="lead">Developed modular Spring Boot microservices with clear boundaries between API, business, data,
-            and external-integration concerns—making complex enterprise features easier to change and support.</p>
+
+    <section class="case-hero reveal">
+
+        <p class="kicker">
+            05 / Architecture · Enterprise Backend Systems
+        </p>
+
+        <h1>
+            Enterprise Microservice Design
+        </h1>
+
+        <p class="lead">
+            Designed and evolved Spring Boot microservices that remained maintainable as
+            enterprise requirements, integrations, and business workflows continued to
+            evolve. The focus was not simply delivering APIs, but building backend
+            services that could support long-term product growth without becoming tightly
+            coupled or difficult to change.
+        </p>
+
         <div class="case-meta">
-            <span>Role · Senior Backend Engineer</span><span>Domain · Life insurance platform</span><span>Team · Co-led offshore team of 4–5</span><span>Production · Yes</span><span>Scope · Multiple enterprise projects</span>
+
+            <span>Role · Staff Engineer</span>
+
+            <span>Domain · Insurance Platform</span>
+
+            <span>Architecture · Spring Boot Microservices</span>
+
+            <span>Deployment · Production</span>
+
+            <span>Focus · Maintainability & Scalability</span>
+
         </div>
+
     </section>
+
     <section class="case-content reveal">
-        <aside><p class="kicker">At a glance</p>
+
+        <aside>
+
+            <p class="kicker">
+                Architecture Overview
+            </p>
+
             <dl>
-                <dt>Pattern</dt>
-                <dd>Controller → service → repository → integration boundary</dd>
-                <dt>Stack</dt>
-                <dd>Java 17, Spring Boot, JPA, Oracle, Redis, IBM MQ, LDAP, Okta, Splunk</dd>
-                <dt>Focus</dt>
-                <dd>Maintainability and reliable evolution</dd>
+
+                <dt>Technology</dt>
+
+                <dd>
+
+                    Java 17<br>
+
+                    Spring Boot<br>
+
+                    REST APIs<br>
+
+                    Oracle Database
+
+                </dd>
+
+                <dt>Integrations</dt>
+
+                <dd>
+
+                    LDAP<br>
+
+                    Okta<br>
+
+                    IBM MQ<br>
+
+                    Redis
+
+                </dd>
+
+                <dt>Primary Goal</dt>
+
+                <dd>
+
+                    Long-term maintainability
+
+                </dd>
+
             </dl>
+
         </aside>
-        <div><h2>Business context</h2>
-            <p>A digital insurance platform contained services for registration, policy management, documents,
-                authentication, and enterprise integrations. Requirements evolved continually, but services still needed
-                to remain understandable, testable, and safe to extend.</p>
-            <h2>The challenge</h2>
-            <p>As databases, identity systems, messaging, and business services accumulate, tightly coupled code becomes
-                expensive to change and difficult to troubleshoot. The objective was to deliver features while
-                preserving clear responsibilities and API compatibility.</p>
-            <h2>My contribution</h2>
-            <p>I developed REST APIs and business logic, integrated enterprise systems, supported testing and
-                deployment, reviewed code, and worked closely with frontend, QA, business, and DevOps partners to
-                deliver production-ready features.</p>
-            <h2>Architectural approach</h2>
-            <p>Controllers handled input validation and responses; service classes held business rules; repositories
-                encapsulated data access. External systems such as identity providers and messaging were isolated behind
-                service interfaces, keeping the core business layer less dependent on implementation details.</p>
-            <p>This made new feature work, testing, and production investigation more predictable: teams could isolate
-                whether an issue lived in request handling, business logic, data access, or a downstream
-                integration.</p>
-            <h2>Engineering decisions</h2>
+
+        <div>
+
+            <h2>Executive Summary</h2>
+
+            <p>
+
+                Enterprise backend systems continuously evolve. New business rules, external
+                integrations, authentication mechanisms, and customer requirements are added
+                over time, making software architecture a long-term engineering concern rather
+                than a one-time design activity.
+
+            </p>
+
+            <p>
+
+                Across multiple insurance platform initiatives, I developed Spring Boot
+                microservices that emphasized clear service boundaries, modular business logic,
+                and isolated integrations. This approach simplified future enhancements,
+                reduced coupling between components, and enabled teams to introduce new
+                features without repeatedly restructuring existing services.
+
+            </p>
+
+            <h2>Business Context</h2>
+
+            <p>
+
+                The insurance platform supported several business capabilities including member
+                registration, authentication, policy servicing, document generation, enterprise
+                messaging, and downstream integrations. These capabilities were delivered by
+                multiple backend services that continued evolving as business priorities
+                changed.
+
+            </p>
+
+            <p>
+
+                While delivering new functionality remained important, maintaining a clean
+                architecture became equally critical. Poor service boundaries often lead to
+                tightly coupled systems where even small business changes require modifications
+                across multiple services, increasing delivery time and operational risk.
+
+            </p>
+
+            <h2>Engineering Challenges</h2>
+
+            <p>
+
+                Designing maintainable enterprise services required balancing immediate feature
+                delivery with long-term system evolution. Every new requirement had the
+                potential to increase coupling unless architectural boundaries were carefully
+                maintained.
+
+            </p>
+
             <ul>
-                <li><strong>Layered architecture:</strong> clearer ownership and lower coupling.</li>
-                <li><strong>Dependency injection:</strong> improved testability and made implementation changes safer.
+
+                <li>
+
+                    Supporting evolving business requirements without repeatedly restructuring
+                    existing services.
+
                 </li>
-                <li><strong>REST:</strong> fit synchronous customer-facing workflows with immediate responses.</li>
-                <li><strong>Modular integration boundaries:</strong> contained the effects of external-system changes.
+
+                <li>
+
+                    Keeping business logic independent from external systems such as identity
+                    providers, messaging platforms, and downstream APIs.
+
                 </li>
+
+                <li>
+
+                    Maintaining stable REST contracts while internal implementations continued to
+                    evolve.
+
+                </li>
+
+                <li>
+
+                    Reducing the impact of future technology changes through modular integration
+                    layers.
+
+                </li>
+
+                <li>
+
+                    Designing services that remained understandable for engineers joining the team
+                    months or years later.
+
+                </li>
+
             </ul>
-            <h2>Outcome</h2>
-            <p>The approach improved readability and onboarding, reduced the cost of enhancements, and made code reviews
-                and incident investigation more effective. It supported dependable enterprise delivery without chasing
-                unnecessary complexity.</p>
-            <h2>What I would improve today</h2>
-            <p>For a new service, I would add contract testing, Testcontainers integration coverage, Micrometer metrics,
-                OpenTelemetry tracing, resilience patterns, automated health checks, and Java 21 virtual threads where
-                blocking workloads justify them.</p>
-            <h2>Key lesson</h2>
-            <p>Enterprise software is judged over years, not a sprint. Clear boundaries and simple, consistent patterns
-                are a delivery advantage—not just a code-style preference.</p>
-            <h2>Recruiter summary</h2>
-            <p>Established layered, testable Spring Boot service architecture across a multi-project insurance platform,
-                co-leading a 4–5 engineer offshore team and making feature delivery, code review, and incident response
-                measurably faster.</p></div>
+            <h2>My Engineering Ownership</h2>
+
+            <p>
+
+                My responsibility extended beyond implementing REST endpoints. I contributed to
+                the design and development of backend services that remained maintainable as new
+                business capabilities, integrations, and production requirements were introduced.
+                The goal was to deliver features without allowing the architecture to gradually
+                become tightly coupled.
+
+            </p>
+
+            <p>
+
+                Across multiple projects, I designed REST APIs, implemented business services,
+                integrated enterprise systems, reviewed code, participated in technical design
+                discussions, and collaborated with frontend developers, QA engineers, business
+                analysts, and DevOps teams throughout the software delivery lifecycle.
+
+            </p>
+
+            <p>
+
+                My engineering responsibilities included:
+
+            </p>
+
+            <ul>
+
+                <li>
+                    Designing REST APIs that exposed stable contracts to consuming applications.
+                </li>
+
+                <li>
+                    Implementing business logic while maintaining clear separation between API,
+                    domain, persistence, and integration layers.
+                </li>
+
+                <li>
+                    Building reusable service components shared across multiple business workflows.
+                </li>
+
+                <li>
+                    Integrating enterprise systems including LDAP, Okta, Redis, IBM MQ, and Oracle
+                    without exposing implementation details throughout the application.
+                </li>
+
+                <li>
+                    Supporting production deployments, troubleshooting incidents, and improving
+                    existing implementations as requirements evolved.
+                </li>
+
+                <li>
+                    Participating in design reviews, code reviews, and technical discussions to
+                    maintain consistency across services.
+                </li>
+
+            </ul>
+
+            <h2>Architecture Strategy</h2>
+
+            <p>
+
+                Rather than viewing each microservice as an isolated project, we treated every
+                service as part of a larger enterprise platform. Individual services needed to
+                remain independently maintainable while still integrating reliably with numerous
+                upstream and downstream systems.
+
+            </p>
+
+            <p>
+
+                The guiding principle was to isolate change. Business rules evolve frequently,
+                authentication providers may change, databases are optimized over time, and
+                external integrations occasionally require replacement. By clearly separating
+                these responsibilities, changes in one area had minimal impact on the rest of
+                the application.
+
+            </p>
+
+            <p>
+
+                Instead of allowing controllers, repositories, and external integrations to
+                communicate directly with one another, each layer maintained a well-defined
+                responsibility. This reduced coupling, simplified testing, and made production
+                issues easier to isolate.
+
+            </p>
+
+            <h2>Architecture Principles</h2>
+
+            <ul>
+
+                <li>
+
+                    <strong>Stable API contracts</strong><br>
+
+                    Public REST interfaces remained consistent even as internal implementations
+                    changed.
+
+                </li>
+
+                <li>
+
+                    <strong>Business logic independent of infrastructure</strong><br>
+
+                    Business rules were implemented within service layers rather than being
+                    distributed across controllers or persistence code.
+
+                </li>
+
+                <li>
+
+                    <strong>Integration boundaries</strong><br>
+
+                    External systems such as LDAP, Okta, IBM MQ, and Redis were isolated behind
+                    dedicated service abstractions to minimize the impact of future integration
+                    changes.
+
+                </li>
+
+                <li>
+
+                    <strong>Single responsibility</strong><br>
+
+                    Each component performed one primary function, improving readability,
+                    maintainability, and long-term ownership.
+
+                </li>
+
+                <li>
+
+                    <strong>Reusable business services</strong><br>
+
+                    Shared functionality was centralized instead of duplicated across multiple
+                    features, reducing maintenance effort and improving consistency.
+
+                </li>
+
+            </ul>
+
+            <h2>Key Engineering Decisions</h2>
+
+            <h3>Separate business rules from technical concerns</h3>
+
+            <p>
+
+                Controllers focused on request validation and response handling, while business
+                logic remained within dedicated service classes. Database access, messaging, and
+                external integrations were isolated behind well-defined interfaces. This kept
+                business behaviour easier to understand, modify, and test.
+
+            </p>
+
+            <h3>Design for change instead of today's requirements</h3>
+
+            <p>
+
+                Enterprise applications rarely remain static. New onboarding rules, regulatory
+                requirements, downstream integrations, and authentication changes are introduced
+                regularly. Architectural decisions therefore prioritized flexibility rather than
+                optimizing only for the current release.
+
+            </p>
+
+            <h3>Encapsulate external dependencies</h3>
+
+            <p>
+
+                Identity providers, messaging systems, caching layers, and external services were
+                treated as replaceable implementation details rather than core business logic.
+                This reduced the impact of infrastructure changes on application behaviour and
+                simplified future migrations.
+
+            </p>
+
+            <h3>Maintain predictable service boundaries</h3>
+
+            <p>
+
+                Consistent architectural patterns across services improved onboarding, code
+                reviews, and production troubleshooting because engineers could quickly identify
+                where responsibilities belonged within the application.
+
+            </p>
+
+            <h2>Production Considerations</h2>
+
+            <p>
+
+                Enterprise architecture is ultimately validated in production rather than during
+                development. Services therefore needed to remain observable, diagnosable, and
+                safe to modify after deployment.
+
+            </p>
+
+            <p>
+
+                Clear separation of responsibilities made production investigations more
+                efficient. Engineers could determine whether an issue originated within request
+                handling, business logic, database access, caching, messaging, or downstream
+                integrations without navigating tightly coupled code spread across multiple
+                layers.
+
+            </p>
+
+            <p>
+
+                The same architectural consistency also simplified feature delivery. New business
+                requirements could usually be implemented by extending existing service
+                boundaries rather than restructuring large portions of the application,
+                reducing both development effort and deployment risk.
+
+            </p>
+            <h2>Results</h2>
+
+            <div class="result">
+
+                <b>Modular</b>
+
+                <p>
+
+                    <strong>Maintainable service architecture</strong><br>
+
+                    Clear separation between API, business logic, persistence, and
+                    integration layers reduced coupling and simplified long-term
+                    maintenance across multiple enterprise services.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>Stable</b>
+
+                <p>
+
+                    <strong>Predictable feature delivery</strong><br>
+
+                    New business requirements were typically implemented by extending
+                    existing services rather than restructuring the architecture,
+                    reducing implementation effort and deployment risk.
+
+                </p>
+
+            </div>
+
+            <br>
+
+            <div class="result">
+
+                <b>Reusable</b>
+
+                <p>
+
+                    <strong>Shared engineering patterns</strong><br>
+
+                    Consistent architectural approaches improved code reviews,
+                    onboarding, collaboration, and long-term ownership across the
+                    engineering team.
+
+                </p>
+
+            </div>
+
+            <p>
+
+                Although architecture quality is difficult to measure using a single metric,
+                its impact became increasingly visible as the platform evolved. New business
+                features, authentication enhancements, downstream integrations, and production
+                changes could be implemented with confidence because service boundaries had
+                been established early and applied consistently.
+
+            </p>
+
+            <h2>Lessons Learned</h2>
+
+            <p>
+
+                One of the biggest lessons from this work was that maintainability is not an
+                outcome—it is an architectural decision made every day throughout software
+                development. Small shortcuts that simplify today's feature often become the
+                source of tomorrow's technical debt.
+
+            </p>
+
+            <p>
+
+                Several engineering principles consistently proved valuable:
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Design services around business capabilities rather than implementation
+                    details.
+
+                </li>
+
+                <li>
+
+                    Treat external systems as replaceable dependencies instead of allowing them
+                    to influence core business logic.
+
+                </li>
+
+                <li>
+
+                    Protect stable API contracts even when implementations evolve internally.
+
+                </li>
+
+                <li>
+
+                    Optimize for readability and consistency before introducing unnecessary
+                    architectural complexity.
+
+                </li>
+
+                <li>
+
+                    Remember that production support becomes dramatically easier when service
+                    responsibilities remain well defined.
+
+                </li>
+
+            </ul>
+
+            <h2>What I Would Improve Today</h2>
+
+            <p>
+
+                If I were designing the same platform today, I would build upon the existing
+                architecture while introducing additional practices that have become more
+                common in modern cloud-native environments.
+
+            </p>
+
+            <ul>
+
+                <li>
+
+                    Introduce consumer-driven contract testing to validate API compatibility
+                    between services before deployment.
+
+                </li>
+
+                <li>
+
+                    Expand Testcontainers-based integration testing to improve confidence in
+                    database and infrastructure changes.
+
+                </li>
+
+                <li>
+
+                    Add OpenTelemetry distributed tracing alongside structured logging for
+                    end-to-end request visibility.
+
+                </li>
+
+                <li>
+
+                    Implement Micrometer metrics with service-level dashboards to identify
+                    performance regressions earlier.
+
+                </li>
+
+                <li>
+
+                    Apply resilience patterns such as circuit breakers, retries, and bulkheads
+                    where external integrations require additional fault tolerance.
+
+                </li>
+
+                <li>
+
+                    Evaluate Java 21 virtual threads for suitable blocking workloads after
+                    performance benchmarking.
+
+                </li>
+
+            </ul>
+
+            <h2>Recruiter Summary</h2>
+
+            <p>
+
+                Designed and developed enterprise Spring Boot microservices supporting a
+                large-scale insurance platform by emphasizing stable API contracts, modular
+                business services, isolated integration layers, and long-term maintainability.
+                The resulting architecture simplified feature delivery, production support,
+                and future platform evolution while integrating reliably with Oracle, Redis,
+                LDAP, Okta, IBM MQ, and other enterprise systems.
+
+            </p>
+
+        </div>
+
     </section>
+
 </main>
-<footer class="footer shell"><p>© <span class="year"></span> Pravin.</p><a href="../index.html">Portfolio home</a>
+
+<footer class="footer shell">
+
+    <p>
+        © <span class="year"></span> Pravin.
+    </p>
+
+    <a href="../index.html">
+        Portfolio home
+    </a>
+
 </footer>
+
 <script src="../script.js"></script>
+
 </body>
+
 </html>
