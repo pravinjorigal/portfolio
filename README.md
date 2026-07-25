@@ -1,8 +1,11 @@
 Pravin's Portfolio https://pravinjorigal.github.io/portfolio/
 
-A static, GitHub Pages-ready portfolio for a Senior Java Backend Engineer. It presents eight confidentiality-safe engineering case studies and requires no build step or backend.
+A static, GitHub Pages-ready portfolio for a Senior Java Backend Engineer. It presents eight confidentiality-safe
+engineering case studies and requires no build step or backend.
 
-The site is fully data-driven: `index.html` holds only semantic structure and empty containers, and everything else (career metrics, skills, experience, education, certifications, project cards, engineering snapshots, and contact links) renders from a single `portfolio` object in `script.js`.
+The site is fully data-driven: `index.html` holds only semantic structure and empty containers, and everything else (
+career metrics, skills, experience, education, certifications, project cards, engineering snapshots, and contact links)
+renders from a single `portfolio` object in `script.js`.
 
 ## Files
 
@@ -31,7 +34,9 @@ Shorter, focused stories:
 6. Redis Caching Strategy — cache-aside design for reference data
 7. SQL Optimization — Oracle query and indexing rework
 
-Every case study follows the same format: business context, constraints, role, architecture, technology stack, solution, engineering decisions, challenges, business impact, a production support story, lessons learned, what would be improved today, and a recruiter summary.
+Every case study follows the same format: business context, constraints, role, architecture, technology stack, solution,
+engineering decisions, challenges, business impact, a production support story, lessons learned, what would be improved
+today, and a recruiter summary.
 
 ## License
 
