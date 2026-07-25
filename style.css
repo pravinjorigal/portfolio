@@ -326,7 +326,7 @@ h1, h2, h3 {
 }
 
 .section-intro h2 {
-    font-size: clamp(2rem, 3.6vw, 3.4rem);
+    font-size: clamp(1.8rem, 3vw, 3rem);
 }
 
 .section-intro > p:not(.kicker), .prose {
@@ -339,6 +339,27 @@ h1, h2, h3 {
 
 .prose p:first-child {
     margin-top: 0;
+}
+
+.engineering-principles {
+    margin: 24px 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.engineering-principles li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 10px;
+    color: var(--muted);
+}
+
+.engineering-principles li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 .facts {
@@ -395,21 +416,22 @@ h1, h2, h3 {
 
 .timeline li {
     display: grid;
-    grid-template-columns:180px 1fr;
-    gap: 44px;
-    padding: 30px 0;
+    grid-template-columns:120px minmax(0,1fr);
+    gap: 28px;
+    padding: 26px 0;
     border-top: 1px solid var(--line);
 }
 
 .period {
-    margin: 0;
-    color: var(--accent);
-    font: .75rem "DM Mono";
+    margin-top:4px;
+    color:var(--accent);
+    font:.75rem "DM Mono";
+    white-space:nowrap;
 }
 
 .timeline h3 {
-    margin: 0;
-    font: 600 1.35rem "Space Grotesk";
+    margin:0 0 12px;
+    font:600 1.45rem "Space Grotesk";
 }
 
 .timeline h3 span {
@@ -417,8 +439,46 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
-.timeline li p:not(.period), .timeline ul {
+.timeline li p:not(.period) {
+    max-width: 900px;
     color: var(--muted);
+}
+
+.experience-summary{
+    margin:18px 0 28px;
+}
+
+.experience-highlights{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px 36px;
+}
+
+.highlight{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.highlight-icon{
+    flex:none;
+    width:28px;
+    height:28px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+    background:rgba(98,163,255,.12);
+
+    color:var(--accent);
+
+    font-weight:700;
+}
+
+.highlight p{
+    margin:0;
+    line-height:1.6;
 }
 
 .timeline ul, .case-content ul {
@@ -766,9 +826,18 @@ h1, h2, h3 {
         border-bottom: 1px solid var(--line);
     }
 
-    .timeline li, .case-content {
+    .timeline li,
+    .case-content{
         grid-template-columns:1fr;
-        gap: 24px;
+        gap:20px;
+    }
+
+    .timeline ul{
+        grid-template-columns:1fr;
+    }
+
+    .experience-highlights{
+        grid-template-columns:1fr;
     }
 
     .facts {

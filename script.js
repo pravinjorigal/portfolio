@@ -15,7 +15,7 @@ const portfolio = {
   },
 
   metrics: [
-    { value: '~8', label: 'years in enterprise engineering' },
+    { value: '8+', label: 'years in enterprise engineering' },
     { value: '50+', label: 'enterprise APIs delivered' },
     { value: '30+', label: 'enterprise production releases' },
     { value: '50+', label: 'production issues investigated & resolved' },
@@ -37,10 +37,10 @@ const portfolio = {
       org: 'Nagarro',
       description: 'Progressed through Senior Engineer and Associate Staff Engineer to Staff Engineer while leading backend modernization, designing enterprise APIs, improving production reliability, and driving performance initiatives for a large-scale insurance platform handling approximately 50K–100K requests per day.',
       points: [
-        'Improved P90 latency by ~75% (6s → 1.5s) using asynchronous processing with CompletableFuture, Redis caching, and Oracle SQL optimization.',
-        'Led incremental modernization from legacy WebSphere applications to Java 17 and Spring Boot 3 microservices, resolving Jakarta migration challenges and more than 100 security vulnerabilities with stable production releases.',
-        'Enhanced production observability through structured JSON logging and Splunk dashboards, significantly reducing root cause analysis time for production incidents.',
-        'Co-led an offshore engineering team of 4–5 developers, contributing to technical design, code reviews, production support, and delivery planning.'
+        'Reduced P90 latency by ~75% (6s → 1.5s) using CompletableFuture, Redis caching, and Oracle SQL optimization.',
+        'Modernized legacy WebSphere applications to Java 17 and Spring Boot 3 while resolving Jakarta migration challenges and 100+ security vulnerabilities.',
+        'Improved production observability with structured JSON logging and Splunk dashboards, accelerating root cause analysis.',
+        'Co-led an offshore engineering team through technical design, code reviews, production support, and delivery planning.'
       ]
     },
     {
@@ -191,7 +191,45 @@ function renderSkills() {
 function renderExperience() {
   const el = document.getElementById('experience-container');
   if (!el) return;
-  el.innerHTML = portfolio.experience.map(e => `<li class="reveal"><p class="period">${e.period}</p><div><h3>${e.title} <span>· ${e.org}</span></h3><p>${e.description}</p><ul>${e.points.map(pt => `<li>${pt}</li>`).join('')}</ul></div></li>`).join('');
+
+  el.innerHTML = portfolio.experience.map(e => `
+    <li class="reveal">
+
+      <p class="period">
+        ${e.period}
+      </p>
+
+      <div>
+
+        <h3>
+          ${e.title}
+          <span>· ${e.org}</span>
+        </h3>
+
+        <p class="experience-summary">
+          ${e.description}
+        </p>
+
+        <div class="experience-highlights">
+
+          ${e.points.map(pt => `
+
+            <div class="highlight">
+
+              <span class="highlight-icon">✓</span>
+
+              <p>${pt}</p>
+
+            </div>
+
+          `).join('')}
+
+        </div>
+
+      </div>
+
+    </li>
+  `).join('');
 }
 
 function renderEducation() {
