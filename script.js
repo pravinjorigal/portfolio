@@ -99,23 +99,21 @@ const portfolio = {
         featured: true
       },
     {
-      number: '02',
-      tag: 'Architecture',
-      title: 'Quick Registration',
-      tech: ['Java 17', 'Spring Boot', 'LDAP', 'Okta', 'REST API'],
-      summary: 'Designed and delivered a high-throughput registration workflow by orchestrating multiple backend services, business validations, LDAP, and Okta integrations behind a single API while keeping the solution extensible for future onboarding requirements.',
-      link: 'projects/quick-registration.html'
+        number: '02',
+        tag: 'Forms Modernization',
+        title: 'Enterprise Forms Platform Modernization',
+        tech: ['Java 17',
+                'Spring Boot',
+                'REST APIs',
+                'Contentful',
+                'Redis',
+                'Apigee',
+                'Oracle'],
+        summary: 'Modernized an enterprise forms platform by replacing a legacy content management solution with Contentful, redesigning backend APIs, reducing legacy metadata dependencies, and delivering the solution through production.',
+        link: 'projects/enterprise-forms-platform-modernization.html'
     },
     {
       number: '03',
-      tag: 'Modernization',
-      title: 'Java 17 & Spring Boot 3',
-      tech: ['Java 17', 'Spring Boot 3', 'Jakarta EE', 'Maven'],
-      summary: 'Led the incremental modernization of legacy enterprise applications to Java 17 and Spring Boot 3, resolving Jakarta migration challenges, dependency compatibility issues, and security vulnerabilities while ensuring stable production deployments.',
-      link: 'projects/legacy-modernization.html'
-    },
-    {
-      number: '04',
       tag: 'Production',
       title: 'Production Reliability',
       tech: ['Splunk', 'JSON Logging', 'Spring Boot', 'REST APIs'],
@@ -123,12 +121,20 @@ const portfolio = {
       link: 'projects/production-reliability.html'
     },
     {
-      number: '05',
+      number: '04',
       tag: 'Architecture',
-      title: 'Enterprise Microservice Design',
-      tech: ['Spring Boot', 'Microservices', 'REST APIs', 'Oracle'],
-      summary: 'Designed modular Spring Boot microservices with clear service boundaries, reusable integration layers, and maintainable APIs to simplify future enhancements, reduce coupling, and improve long-term supportability.',
-      link: 'projects/maintainable-microservices.html'
+      title: 'Quick Registration',
+      tech: ['Java 17', 'Spring Boot', 'LDAP', 'Okta', 'REST API'],
+      summary: 'Designed and delivered a high-throughput registration workflow by orchestrating multiple backend services, business validations, LDAP, and Okta integrations behind a single API while keeping the solution extensible for future onboarding requirements.',
+      link: 'projects/quick-registration.html'
+    },
+    {
+      number: '05',
+      tag: 'Overall Modernization',
+      title: 'Java 17 & Spring Boot 3',
+      tech: ['Java 17', 'Spring Boot 3', 'Jakarta EE', 'Maven'],
+      summary: 'Led the incremental modernization of legacy enterprise applications to Java 17 and Spring Boot 3, resolving Jakarta migration challenges, dependency compatibility issues, and security vulnerabilities while ensuring stable production deployments.',
+      link: 'projects/legacy-modernization.html'
     },
     {
       number: '06',
@@ -138,7 +144,14 @@ const portfolio = {
       summary: 'Designed and implemented a Redis cache-aside strategy for frequently accessed reference data, reducing database load, improving response times, and balancing performance with data consistency through controlled cache invalidation.',
       link: 'projects/redis-caching-strategy.html'
     },
-    { number: '07', tag: 'Data', title: 'SQL Optimization', tech: ['Oracle SQL', 'MyBatis', 'PL/SQL'], summary: 'Rewrote slow Oracle queries and indexing behind a banking search and export feature, turning multi-second table scans into near-instant lookups.', link: 'projects/sql-optimization.html' }
+    {
+      number: '07',
+      tag: 'Architecture',
+      title: 'Enterprise Microservice Design',
+      tech: ['Spring Boot', 'Microservices', 'REST APIs', 'Oracle'],
+      summary: 'Designed modular Spring Boot microservices with clear service boundaries, reusable integration layers, and maintainable APIs to simplify future enhancements, reduce coupling, and improve long-term supportability.',
+      link: 'projects/maintainable-microservices.html'
+    }
   ],
 
   snapshots: [
