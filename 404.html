@@ -29,5 +29,14 @@
     <h1>That page does not exist.</h1>
     <p class="lead">The link may have moved or been removed.</p><a class="button primary" href="index.html">Return to
         portfolio</a></main>
+
+<script>
+    if (typeof gtag !== "undefined") {
+        gtag("event", "case_study_open", {
+            case_study: document.title
+        });
+    }
+</script>
+
 </body>
 </html>

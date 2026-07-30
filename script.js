@@ -342,3 +342,29 @@ function renderPortfolio() {
     document.documentElement.style.setProperty('--progress', `${height ? scrollY / height * 100 : 0}%`);
   }, { passive: true });
 })();
+
+/* ---------- Analytics ---------- */
+
+function trackResumeDownload() {
+    if (typeof gtag !== "undefined") {
+        gtag("event", "resume_download");
+    }
+}
+
+function trackGitHub() {
+    if (typeof gtag !== "undefined") {
+        gtag("event", "github_click");
+    }
+}
+
+function trackLinkedIn() {
+    if (typeof gtag !== "undefined") {
+        gtag("event", "linkedin_click");
+    }
+}
+
+function trackEmail() {
+    if (typeof gtag !== "undefined") {
+        gtag("event", "email_click");
+    }
+}

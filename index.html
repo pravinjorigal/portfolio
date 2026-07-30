@@ -67,7 +67,8 @@
                 modernization, production reliability, and scalable backend architecture.
             </p>
             <div class="actions"><a class="button primary" href="#projects">Explore projects <span>→</span></a><a
-                    class="button quiet" id="hero-resume" href="assets/documents/Pravin_Resume.pdf" download>Download
+                    class="button quiet" id="hero-resume" href="assets/documents/Pravin_Resume.pdf" download
+                    onclick="trackResumeDownload()">Download
                 résumé</a></div>
             <ul class="hero-tags" aria-label="Core technologies">
                 <li>Java 17</li>
@@ -212,7 +213,8 @@
         <div class="resume-card reveal">
             <dl class="resume-summary" id="resume-summary"></dl>
             <div class="actions"><a class="button primary" id="resume-download"
-                href="assets/documents/Pravin_Resume.pdf" download>Download résumé
+                                    href="assets/documents/Pravin_Resume.pdf" download
+                                    onclick="trackResumeDownload()">Download résumé
                 <span>↓</span></a>
                 <a class="button quiet"
                    href="mailto:jorigalpravin@gmail.com?subject=Resume%20Request">
@@ -245,15 +247,27 @@
         </p>
         <div class="actions" id="social-container"><a class="button primary placeholder-email"
                                                       id="contact-email"
-                                                      href="mailto:jorigalpravin@gmail.com?subject=Senior%20Backend%20Engineer%20Opportunity">
+                                                      href="mailto:jorigalpravin@gmail.com?subject=Senior%20Backend%20Engineer%20Opportunity"
+                                                      onclick="trackEmail()">
             Let's connect <span>→</span>
         </a><a class="button quiet placeholder-linkedin" id="contact-linkedin"
-               href="https://linkedin.com/in/pravinjorigal">LinkedIn</a><a
-                class="button quiet placeholder-github" id="contact-github" href="https://github.com/pravinjorigal">GitHub</a>
+               href="https://linkedin.com/in/pravinjorigal" onclick="trackLinkedIn()">LinkedIn</a><a
+                class="button quiet placeholder-github" id="contact-github" href="https://github.com/pravinjorigal"
+                onclick="trackGitHub()">GitHub</a>
         </div>
     </section>
 </main>
-<footer class="footer shell"><p>© <span class="year"></span> Designed and built by Pravin Jorigal</p><a href="#top">Back to top ↑</a></footer>
+<div class="analytics-disclaimer">
+    <strong>Analytics & Privacy</strong>
+    <p>
+        This portfolio is instrumented with analytics to better understand visitor engagement and continuously improve
+        the site. Anonymous usage metrics may be collected through Google Analytics and Microsoft Clarity. These tools
+        are used solely to understand aggregate visitor behavior and improve the website; no personal information is
+        intentionally collected through this website.
+    </p>
+</div>
+<footer class="footer shell"><p>© <span class="year"></span> Designed and built by Pravin Jorigal</p><a href="#top">Back
+    to top ↑</a></footer>
 <script src="script.js"></script>
 </body>
 </html>

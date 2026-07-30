@@ -416,22 +416,22 @@ h1, h2, h3 {
 
 .timeline li {
     display: grid;
-    grid-template-columns:120px minmax(0,1fr);
+    grid-template-columns:120px minmax(0, 1fr);
     gap: 28px;
     padding: 26px 0;
     border-top: 1px solid var(--line);
 }
 
 .period {
-    margin-top:4px;
-    color:var(--accent);
-    font:.75rem "DM Mono";
-    white-space:nowrap;
+    margin-top: 4px;
+    color: var(--accent);
+    font: .75rem "DM Mono";
+    white-space: nowrap;
 }
 
 .timeline h3 {
-    margin:0 0 12px;
-    font:600 1.45rem "Space Grotesk";
+    margin: 0 0 12px;
+    font: 600 1.45rem "Space Grotesk";
 }
 
 .timeline h3 span {
@@ -444,41 +444,41 @@ h1, h2, h3 {
     color: var(--muted);
 }
 
-.experience-summary{
-    margin:18px 0 28px;
+.experience-summary {
+    margin: 18px 0 28px;
 }
 
-.experience-highlights{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:18px 36px;
+.experience-highlights {
+    display: grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap: 18px 36px;
 }
 
-.highlight{
-    display:flex;
-    align-items:flex-start;
-    gap:14px;
+.highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
 }
 
-.highlight-icon{
-    flex:none;
-    width:28px;
-    height:28px;
+.highlight-icon {
+    flex: none;
+    width: 28px;
+    height: 28px;
 
-    display:grid;
-    place-items:center;
+    display: grid;
+    place-items: center;
 
-    border-radius:50%;
-    background:rgba(98,163,255,.12);
+    border-radius: 50%;
+    background: rgba(98, 163, 255, .12);
 
-    color:var(--accent);
+    color: var(--accent);
 
-    font-weight:700;
+    font-weight: 700;
 }
 
-.highlight p{
-    margin:0;
-    line-height:1.6;
+.highlight p {
+    margin: 0;
+    line-height: 1.6;
 }
 
 .timeline ul, .case-content ul {
@@ -827,16 +827,16 @@ h1, h2, h3 {
     }
 
     .timeline li,
-    .case-content{
+    .case-content {
         grid-template-columns:1fr;
-        gap:20px;
+        gap: 20px;
     }
 
-    .timeline ul{
+    .timeline ul {
         grid-template-columns:1fr;
     }
 
-    .experience-highlights{
+    .experience-highlights {
         grid-template-columns:1fr;
     }
 
@@ -939,4 +939,27 @@ h1, h2, h3 {
         justify-content: center;
         width: 100%;
     }
+}
+
+.analytics-disclaimer {
+    max-width: 760px;
+    margin: 48px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.analytics-disclaimer p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+.analytics-disclaimer strong{
+    display:block;
+    margin-bottom:8px;
+    color:var(--text);
+    font:600 .78rem "DM Mono";
+    text-transform:uppercase;
+    letter-spacing:.08em;
 }

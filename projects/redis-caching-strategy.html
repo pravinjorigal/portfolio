@@ -662,6 +662,14 @@
 
 <script src="../script.js"></script>
 
+<script>
+    if (typeof gtag !== "undefined") {
+        gtag("event", "case_study_open", {
+            case_study: document.title
+        });
+    }
+</script>
+
 </body>
 
 </html>
